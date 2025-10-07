@@ -1,9 +1,21 @@
 import unittest
-from hello import hello
+from app import app  # If your file is named app.py
 
-class TestHello(unittest.TestCase):
-    def test_hello(self):
-        self.assertEqual(hello(), "Hello, world!")
+class TestFlaskApp(unittest.TestCase):
+
+    def setUp(self):
+        self.client = app.test_client()
+
+    def test_root(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Hello, World!", response.data)
+
+    def test_greet(self):
+        name = "Alice"
+        response = self.client.get(f'/greet/{name}')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(f"Hello, {name}!".encode(), response.data)
 
 if __name__ == '__main__':
     unittest.main()
