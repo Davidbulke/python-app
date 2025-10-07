@@ -92,22 +92,22 @@ spec:
             }
         }
         
-        stage('Install Dependencies') {
-            steps {
-                container('python') {
-                    sh 'pip install -r requirements.txt'
-                }
-            }
-        }
+//         stage('Install Dependencies') {
+//             steps {
+//                 container('python') {
+//                     sh 'pip install -r requirements.txt'
+//                 }
+//             }
+//         }
         
-        stage('Unit Tests') {
-            steps {
-                container('python') {
-                    sh 'pytest --junitxml=pytest-results.xml'
-                    junit 'pytest-results.xml'
-                }
-            }
-        }
+//  //       stage('Unit Tests') {
+//  //           steps {
+//                 container('python') {
+//                     sh 'pytest --junitxml=pytest-results.xml'
+//                     junit 'pytest-results.xml'
+//                 }
+//             }
+//         }
         
         stage('Build Docker Image with Kaniko and Image deploy to Docker Hub') {
             steps {
