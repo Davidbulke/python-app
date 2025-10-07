@@ -1,9 +1,2 @@
-import unittest
-from hello import hello
+Python Hello world application.
 
-class TestHello(unittest.TestCase):
-    def test_hello(self):
-        self.assertEqual(hello(), "Hello, world!")
-
-if __name__ == '__main__':
-    unittest.main()
