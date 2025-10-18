@@ -48,11 +48,11 @@ spec:
       args: ['99d']
       resources:
         requests:
-          memory: "128Mi"
-          cpu: "50m"
+          memory: "512Mi"
+          cpu: "500m"
         limits:
-          memory: "256Mi"
-          cpu: "100m"
+          memory: "1Gi"
+          cpu: "1"
   volumes:
     - name: docker-config
       secret:
