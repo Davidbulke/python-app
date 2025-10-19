@@ -12,33 +12,33 @@ spec:
       image: jenkins/inbound-agent:3206.vb_15dcf73f6a_9-2-jdk17
       resources:
         requests:
-          memory: "256Mi"
-          cpu: "100m"
-        limits:
           memory: "512Mi"
-          cpu: "250m"
+          cpu: "500m"
+        limits:
+          memory: "1Gi"
+          cpu: "500m"
     - name: python
       image: python:3.12-slim
       command: [sleep]
       args: [99d]
       resources:
         requests:
-          memory: "512Mi"
-          cpu: "250m"
-        limits:
           memory: "1Gi"
           cpu: "500m"
+        limits:
+          memory: "2Gi"
+          cpu: "1000m"
     - name: kaniko
       image: gcr.io/kaniko-project/executor:v1.19.0-debug
       command: ['/busybox/cat']
       tty: true
       resources:
         requests:
-          memory: "512Mi"
-          cpu: "250m"
+          memory: "2Gi"
+          cpu: "1000m"
         limits:
-          memory: "1Gi"
-          cpu: "500m"
+          memory: "4Gi"
+          cpu: "2000m"
       volumeMounts:
         - name: docker-config
           mountPath: /kaniko/.docker
